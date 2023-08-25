@@ -279,11 +279,11 @@ class _BrowserState extends State<Browser> with TickerProviderStateMixin {
             // End :: WebView ----------------------------------------------
 
             // Start :: BannerAd -------------------------------------------
-            if (_bannerAd != null)
-              SizedBox(
-                height: 60,
-                child: AdWidget(ad: _bannerAd!),
-              ),
+            // if (_bannerAd != null)
+            //   SizedBox(
+            //     height: 60,
+            //     child: AdWidget(ad: _bannerAd!),
+            //   ),
             // End :: BannerAd ----------------------------------------------
           ],
         ),
