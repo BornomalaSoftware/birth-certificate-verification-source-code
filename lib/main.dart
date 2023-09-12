@@ -43,20 +43,19 @@ Future<void> checkConnection() async {
   final connectivityResult = Connectivity().checkConnectivity();
   if (await connectivityResult == ConnectivityResult.mobile ||
       await connectivityResult == ConnectivityResult.wifi ||
-      await connectivityResult == ConnectivityResult.ethernet ||
-      await connectivityResult == ConnectivityResult.vpn) {
+      await connectivityResult == ConnectivityResult.ethernet) {
     isConnected = true;
   }
 }
-
 // End :: Connectivity ---------------------------------------------------------
+
 // Start :: Main ---------------------------------------------------------------
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await showAppOpenAd();
   await checkConnection();
+  await showAppOpenAd();
 
   FirebaseAnalytics.instance.logScreenView(
     screenName: 'Root',

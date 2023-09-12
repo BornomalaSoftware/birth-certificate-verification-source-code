@@ -80,31 +80,31 @@ class _UDRNBrowserState extends State<UDRNBrowser>
   // End :: BannerAd -----------------------------------------------------------
 
   // Start :: InterstitialAd ---------------------------------------------------
-  // void showInterstitialAd() {
-  //   InterstitialAd.load(
-  //     adUnitId: AdManager.interstitialAdUnitId,
-  //     request: const AdRequest(),
-  //     adLoadCallback: InterstitialAdLoadCallback(
-  //       onAdLoaded: (ad) {
-  //         ad.show();
-  //         widget.analytics!.logEvent(
-  //           name: "browser_interstitialad_loaded_and_shown",
-  //           parameters: {
-  //             "full_text": "Browser's InterstitialAd Loaded And Shown",
-  //           },
-  //         );
-  //       },
-  //       onAdFailedToLoad: (err) {
-  //         widget.analytics!.logEvent(
-  //           name: "browser_interstitialad_failed_to_load",
-  //           parameters: {
-  //             "full_text": "Browser's InterstitialAd Failed To Load",
-  //           },
-  //         );
-  //       },
-  //     ),
-  //   );
-  // }
+  void showInterstitialAd() {
+    InterstitialAd.load(
+      adUnitId: AdManager.interstitialAdUnitId,
+      request: const AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad) {
+          ad.show();
+          widget.analytics!.logEvent(
+            name: "browser_interstitialad_loaded_and_shown",
+            parameters: {
+              "full_text": "Browser's InterstitialAd Loaded And Shown",
+            },
+          );
+        },
+        onAdFailedToLoad: (err) {
+          widget.analytics!.logEvent(
+            name: "browser_interstitialad_failed_to_load",
+            parameters: {
+              "full_text": "Browser's InterstitialAd Failed To Load",
+            },
+          );
+        },
+      ),
+    );
+  }
   // End :: InterstitialAd -----------------------------------------------------
 
   // Declare :: ProgressController ---------------------------------------------
@@ -236,7 +236,18 @@ class _UDRNBrowserState extends State<UDRNBrowser>
                 icon:
                     const Icon(Icons.clear_all_rounded, color: Colors.black45),
                 onPressed: () {
+                  showInterstitialAd();
                   _controller.clearCache();
+                  const snackBar = SnackBar(
+                    content: Center(child: Text('Clear Form')),
+                    // action: SnackBarAction(
+                    //   label: 'Undo',
+                    //   onPressed: () {
+                    //     // Some code to undo the change.
+                    //   },
+                    // ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -247,6 +258,18 @@ class _UDRNBrowserState extends State<UDRNBrowser>
                 }),
             IconButton(
                 onPressed: () {
+                  showInterstitialAd();
+                  const snackBar = SnackBar(
+                    content:
+                        Center(child: Text('Birth Certificate Verification')),
+                    // action: SnackBarAction(
+                    //   label: 'Undo',
+                    //   onPressed: () {
+                    //     // Some code to undo the change.
+                    //   },
+                    // ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -280,12 +303,22 @@ class _UDRNBrowserState extends State<UDRNBrowser>
             ),
             // End :: WebView ----------------------------------------------
 
+            const LinearProgressIndicator(
+              value: 0,
+            ),
+            
             // Start :: BannerAd -------------------------------------------
-            // if (_bannerAd != null)
-            //   SizedBox(
-            //     height: 60,
-            //     child: AdWidget(ad: _bannerAd!),
-            //   ),
+            if (_bannerAd != null)
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: SafeArea(
+                  child: SizedBox(
+                    width: _bannerAd!.size.width.toDouble(),
+                    height: _bannerAd!.size.height.toDouble(),
+                    child: AdWidget(ad: _bannerAd!),
+                  ),
+                ),
+              )
             // End :: BannerAd ----------------------------------------------
           ],
         ),
