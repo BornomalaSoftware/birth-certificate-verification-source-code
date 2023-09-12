@@ -238,16 +238,16 @@ class _UDRNBrowserState extends State<UDRNBrowser>
                 onPressed: () {
                   showInterstitialAd();
                   _controller.clearCache();
-                  const snackBar = SnackBar(
-                    content: Center(child: Text('Clear Form')),
-                    // action: SnackBarAction(
-                    //   label: 'Undo',
-                    //   onPressed: () {
-                    //     // Some code to undo the change.
-                    //   },
-                    // ),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  // const snackBar = SnackBar(
+                  //   content: Center(child: Text('Clear Form')),
+                  //   // action: SnackBarAction(
+                  //   //   label: 'Undo',
+                  //   //   onPressed: () {
+                  //   //     // Some code to undo the change.
+                  //   //   },
+                  //   // ),
+                  // );
+                  // ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -259,17 +259,17 @@ class _UDRNBrowserState extends State<UDRNBrowser>
             IconButton(
                 onPressed: () {
                   showInterstitialAd();
-                  const snackBar = SnackBar(
-                    content:
-                        Center(child: Text('Birth Certificate Verification')),
-                    // action: SnackBarAction(
-                    //   label: 'Undo',
-                    //   onPressed: () {
-                    //     // Some code to undo the change.
-                    //   },
-                    // ),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  // const snackBar = SnackBar(
+                  //   content:
+                  //       Center(child: Text('Birth Certificate Verification')),
+                  //   // action: SnackBarAction(
+                  //   //   label: 'Undo',
+                  //   //   onPressed: () {
+                  //   //     // Some code to undo the change.
+                  //   //   },
+                  //   // ),
+                  // );
+                  // ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
